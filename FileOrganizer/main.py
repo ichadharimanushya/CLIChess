@@ -22,14 +22,13 @@ for file in downloaded_files:
     if file.is_file():
         for key in organization_criteria:
             found = False
-            if file.suffix in organization_criteria[key]: # the desktop.ini will be excluded
+            if file.suffix in organization_criteria[key]:
                 for folder in organised_folders:
                     if folder.name == key:
                         found = True
                         break
                 if not found:
                     (DESTINATION_DIR/key).mkdir()
-                    # create a new dir with name key and add it to the destination_dir for future iterations
                     organised_folders.append(DESTINATION_DIR/key)
                 shutil.move(src = file, dst = DESTINATION_DIR/key)
                 break
