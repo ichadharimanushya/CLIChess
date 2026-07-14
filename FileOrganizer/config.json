@@ -1,0 +1,8 @@
+{
+    "applicationexe" : [".exe"],
+    "images" : [".jpg",".jpeg",".png",".gif",".webp"],
+    "documents" : [".pdf",".doc",".docx",".txt",".ppt",".pptx",".xlsx"],
+    "videos" : [".mp4",".mkv",".mov",".avi"],
+    "audios" : [".mp3",".wav",".flac"],
+    "others" : [".zip",".rar",".7z"]
+}
