@@ -61,6 +61,14 @@ for file in downloaded_files:
                     organised_folders.append(DESTINATION_DIR/key)
                 
                 # move the file
+                candidate_name = file.name
+                candidate_path = DESTINATION_DIR/key/candidate_name
+                number = 1
+                while candidate_path.exists():
+                    candidate_name = f"{file.stem}_{number}{file.suffix}"
+                    candidate_path = DESTINATION_DIR/key/candidate_name
+                    number += 1
+                shutil.move(src = file, dst = candidate_path)
 
                 # potential_duplicates = list((DESTINATION_DIR/key).iterdir())
                 # duplicate_files = 0
