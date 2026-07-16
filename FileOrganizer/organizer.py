@@ -27,9 +27,10 @@ def get_folder_name(ext, configurations):
 
 def organise_folder(source_path, destination_path):
     for file in source_path.iterdir():
+        print(file.name)
         folder = get_folder_name(file.suffix, data)
         if folder is None:
-            return
+            continue
         create_folder(destination_path/folder)
         destination = unique_filename(file, destination_path/folder)
         shutil.move(src = file, dst = destination)
