@@ -23,16 +23,12 @@ class Pawn(Piece):
         # -1 for white, as they move up the rows, self-explanatory
         self.direction = -1 if color == "white" else 1
 
-    def possible_moves(self, board, row, col):
-        pass
+    
 
 class Rook(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = "♜" if color == "white" else "♖"
-
-    def possible_moves(self, board, row, col):
-        pass
 
 class Bishop(Piece):
     def __init__(self, color):

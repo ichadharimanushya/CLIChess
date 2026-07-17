@@ -11,6 +11,9 @@ class Board():
                 [None, None, None, None, None, None, None, None],
                 [Pawn("white"), Pawn("white"), Pawn("white"), Pawn("white"), Pawn("white"), Pawn("white"), Pawn("white"), Pawn("white")],
                 [Rook("white"), Knight("white"), Bishop("white"), Queen("white"), King("white"), Bishop("white"), Knight("white"), Rook("white")],]
+    
+    def get_board(self):
+        return self.board
 
     def print_board(self):  # this function is done, final, packed and sealed.
         number = 8
