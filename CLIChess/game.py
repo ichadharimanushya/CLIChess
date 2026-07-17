@@ -22,7 +22,7 @@ if move.coordinate_to_index(initial_square)is not None and move.coordinate_to_in
     board.print_board()
     piece = board.remove_piece(initial_row, initial_col)
     if not piece == None:
-        board.set_piece(initial_row, initial_row, None)
+        board.set_piece(initial_row, initial_col, None)
         board.set_piece(final_row, final_col, piece)
         board.print_board()
     else:

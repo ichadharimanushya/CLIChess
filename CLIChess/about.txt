@@ -1,0 +1,39 @@
+Phrase 1:
+
+(board.py and pieces.py)
+ built a 2-dimensional array that represent the board and pieces
+ build a function that prints the board in the terminal
+ make the basic piece classes with logic for all pieces, like color and movement type etc
+ establish movement logic for all pieces wrt their class with no obstruction in path
+
+Phrase 2:
+
+(game.py)
+implementing player turn using a state variable that can be "white" or "black"
+add logic to reject an input if the player tries to move an empty square or opponents pieces
+loop back turn to the same player if they make an invalid move
+
+Phrase 3:
+
+(move.py)
+pieces can't move out of bound/board
+conditional pawn moves, forward movement, diagonal capture, 2 square jump from starting position
+en passant
+
+Phrase 4:
+
+(move.py)
+collision detection for rooks and bihops
+combining above for queen using inheritance
+capturing logic for every piece, can't capture own pieces
+
+Phrase 5:
+
+
+Phrase 6:
+
+
+Phrase 7:
+
+
+Phrase 8:

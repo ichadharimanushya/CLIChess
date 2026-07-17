@@ -55,4 +55,4 @@ class Board():
         return (0 <= row < 8 and 0 <= col < 8)
     
     
-# Board().print_board()
+Board().print_board()
