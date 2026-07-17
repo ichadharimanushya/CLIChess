@@ -1,4 +1,4 @@
-# move representation (optional but useful)
+# move representation (helper functions)
 
 def coordinate_to_index(square = ""):
     xy = square.strip().lower()
@@ -19,5 +19,13 @@ def coordinate_to_index(square = ""):
         return None
 
     row = 8 - rank
-    col = ord(file) - ord("a")
+    col = ord(file) - ord('a')
     return row, col
+
+def index_to_coordinate(row, col):
+    if not (0 <= row and row <= 7): return None
+    if not (0 <= col and col <= 7): return None
+
+    file = chr(col + ord('a'))
+    rank = str(8 - row)
+    return file + rank
