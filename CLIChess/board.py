@@ -50,5 +50,3 @@ class Board():
                 if piece is not None and piece.color == color:
                     pieces.append((row, col, piece))
         return pieces
-    
-Board().print_board()
