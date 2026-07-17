@@ -44,7 +44,7 @@ class Board():
     def remove_piece(self, row, col):
         # to remove a piece form a postition and return it
         piece = self.board[row][col]
-        self.board[row][col] = ' '
+        self.board[row][col] = None
         return piece
 
     def set_piece(self, row, col, piece):
@@ -55,4 +55,4 @@ class Board():
         return (0 <= row < 8 and 0 <= col < 8)
     
     
-Board().print_board()
+# Board().print_board()
