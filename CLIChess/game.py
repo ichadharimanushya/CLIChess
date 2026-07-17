@@ -1,5 +1,6 @@
 from board import Board
 import move
+import pieces
 
 # game loop and turn handling
 
@@ -27,3 +28,6 @@ if move.coordinate_to_index(initial_square)is not None and move.coordinate_to_in
         board.print_board()
     else:
         print("k")
+
+k = pieces.Knight("white")
+print(k.possible_moves(board, 7, 6))

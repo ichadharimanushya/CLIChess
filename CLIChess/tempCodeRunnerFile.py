@@ -1,1 +1,0 @@
-Board().print_board()
