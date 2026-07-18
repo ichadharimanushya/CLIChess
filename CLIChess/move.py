@@ -29,3 +29,5 @@ def index_to_coordinate(row, col):
     file = chr(col + ord('a'))
     rank = str(8 - row)
     return file + rank
+
+print(coordinate_to_index("e3"))

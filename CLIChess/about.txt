@@ -4,7 +4,7 @@ Phrase 1:
  built a 2-dimensional array that represent the board and pieces -
  build a function that prints the board in the terminal -
  make the basic piece classes with logic for all pieces, like color and movement type etc -
- establish movement logic for all pieces wrt their class with no obstruction in path
+ establish movement logic for all pieces wrt their class with no obstruction in path -
 
 Phrase 2:
 

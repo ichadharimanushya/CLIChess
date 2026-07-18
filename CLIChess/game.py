@@ -4,30 +4,26 @@ import pieces
 
 # game loop and turn handling
 
-
-
-user = input("Enter a move> ")
-
 board = Board()
-user = user.split()
 
-initial_square = user[0]
-final_square = user[1]
+# basic moment logic
 
-if move.coordinate_to_index(initial_square)is not None and move.coordinate_to_index(final_square) is not None:
-    initial_row, initial_col = move.coordinate_to_index(initial_square)
-    final_row, final_col = move.coordinate_to_index(final_square)
-
-    print(initial_row, initial_col)
-
+for i in range(10):
     board.print_board()
-    piece = board.remove_piece(initial_row, initial_col)
-    if not piece == None:
-        board.set_piece(initial_row, initial_col, None)
-        board.set_piece(final_row, final_col, piece)
-        board.print_board()
-    else:
-        print("k")
+    user = input("Enter a move> ")
+    user = user.split()
+    initial_square = user[0]
+    final_square = user[1]
 
-k = pieces.Knight("white")
-print(k.possible_moves(board, 7, 6))
+
+    row, col = move.coordinate_to_index(initial_square)
+    possible_moves = pieces.King("white").possible_moves(board, row, col)
+    final_move = move.coordinate_to_index(final_square)
+    print(possible_moves, final_move)
+    if final_move in possible_moves:
+        piece = board.remove_piece(row, col)
+        row, col = move.coordinate_to_index(final_square)
+        board.set_piece(row, col, piece)
+    else:
+        print("Invalid move")
+
