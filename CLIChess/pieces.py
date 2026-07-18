@@ -22,6 +22,7 @@ class Pawn(Piece):
         self.symbol = "♟" if color == "white" else "♙"
         # -1 for white, as they move up the rows, self-explanatory
         self.direction = -1 if color == "white" else 1
+        self.has_moved = False
 
     def possible_moves(self, board, row, col):
         moves = [(row+self.direction, col)]
