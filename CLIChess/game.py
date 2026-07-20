@@ -25,7 +25,8 @@ while True:
     # pass
 
     # valid input logic
-    player_move = input(f"{turn} shall enter their move> ").strip().lower()
+    current_player = player_black if turn == "black" else player_white
+    player_move = input(f"{current_player} ({turn})> ").strip().lower()
     if len(player_move) != 5:
         print("Invalid prompt.")
         continue
@@ -60,7 +61,7 @@ while True:
     board.set_piece(player_final_move[0], player_final_move[1], game_piece)
 
     # movement logic
-    turn = "white" if turn == "black" else "white"
+    turn = "black" if turn == "white" else "white"
 
 
 

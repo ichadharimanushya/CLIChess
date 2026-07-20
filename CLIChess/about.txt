@@ -9,9 +9,9 @@ Phrase 1:
 Phrase 2:
 
 (game.py)
-implementing player turn using a state variable that can be "white" or "black"
-add logic to reject an input if the player tries to move an empty square or opponents pieces
-loop back turn to the same player if they make an invalid move
+implementing player turn using a state variable that can be "white" or "black" -
+add logic to reject an input if the player tries to move an empty square or opponents pieces -
+loop back turn to the same player if they make an invalid move -
 
 Phrase 3:
 
