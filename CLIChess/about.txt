@@ -18,6 +18,7 @@ Phrase 3:
 (move.py)
 pieces can't move out of bound/board -
 conditional pawn moves, forward movement, diagonal capture, 2 square jump from starting position -
+refactor code/arrange all code in a structural manner
 en passant
 
 Phrase 4:

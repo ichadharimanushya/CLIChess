@@ -12,9 +12,8 @@ class Piece:
     def __init__(self, color):
         self.color = color
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         pass
-
 
 class Pawn(Piece):
     def __init__(self, color):
@@ -24,24 +23,33 @@ class Pawn(Piece):
         self.direction = -1 if color == "white" else 1
         self.has_moved = False
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         if self.has_moved == False: moves = [(row + 2*(self.direction), col), (row + self.direction, col)]
         else: moves = [(row + self.direction, col)]
         if col == 0:
             diagonal = board.get_piece(row + self.direction, col+1)
-            if diagonal is not None:
+            if diagonal is not None and diagonal.color != self.color:
                 moves.append((row +self.direction, col + 1))
         elif col == 7:
             diagonal = board.get_piece(row + self.direction, col-1)
-            if diagonal is not None:
+            if diagonal is not None and diagonal.color != self.color:
                 moves.append((row +self.direction, col - 1))
         else:
             diagonal = board.get_piece(row + self.direction, col+1)
-            if diagonal is not None:
+            if diagonal is not None and diagonal.color != self.color:
                 moves.append((row +self.direction, col + 1))
             diagonal = board.get_piece(row + self.direction, col-1)
-            if diagonal is not None:
+            if diagonal is not None and diagonal.color != self.color:
                 moves.append((row +self.direction, col - 1))
+        if last_move is None: return moves
+        elif type(last_move[0]) == Pawn:
+            final = last_move[1]
+            initial = last_move[2]
+            if row == final[0] and row in [3, 4] and abs(col-final[1]) == 1:
+                if abs(final[0]-initial[0]) == 2:
+                    skipped = ((final[0]+initial[0])//2, initial[1])
+                    moves.append(skipped)
+                    moves.append(()) # for the catch of en passa or a normal capture
         return moves
 
 class Rook(Piece):
@@ -49,7 +57,7 @@ class Rook(Piece):
         super().__init__(color)
         self.symbol = "♜" if color == "white" else "♖"
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         moves = []
         rook_offset = [
             (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
@@ -70,7 +78,7 @@ class Bishop(Piece):
         super().__init__(color)
         self.symbol = "♝" if color == "white" else "♗"
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         moves = []
         bishop_offset = [
             (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
@@ -91,7 +99,7 @@ class Knight(Piece):
         super().__init__(color)
         self.symbol = "♞" if color == "white" else "♘"
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         moves = []
         knight_offsets = [
             (-2, -1), (-2, 1), (-1, 2), (1, 2), (2, -1), (2, 1), (1, -2), (-1, -2)
@@ -109,7 +117,7 @@ class Queen(Piece):
         super().__init__(color)
         self.symbol = "♛" if color == "white" else "♕"
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         moves = []
         queen_offset = [
             (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
@@ -134,7 +142,7 @@ class King(Piece):
         super().__init__(color)
         self.symbol = "♚" if color == "white" else "♔"
 
-    def possible_moves(self, board, row, col):
+    def possible_moves(self, board, row, col, last_move):
         moves = []
         queen_offset = [
             (-1, -1), (1, -1), (1, 1), (-1, 1), (-1, 0), (0, -1), (1, 0), (0, 1)
