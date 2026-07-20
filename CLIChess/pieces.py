@@ -25,16 +25,23 @@ class Pawn(Piece):
         self.has_moved = False
 
     def possible_moves(self, board, row, col):
-        moves = [(row+self.direction, col)]
-        # pawn_offset = [
-        #     (0, self.direction)#, (1, self.direction), (-1, self.direction)
-        # ]
-        # for r, c in pawn_offset:
-        #     new_row, new_col = r + row, c + col
-        #     if board.is_valid_position(new_row, new_col):
-        #         target_boxORpiece = board.get_piece(new_row, new_col)
-        #         if target_boxORpiece is None or target_boxORpiece.color != self.color:
-        #             moves.append((new_row, new_col))
+        if self.has_moved == False: moves = [(row + 2*(self.direction), col), (row + self.direction, col)]
+        else: moves = [(row + self.direction, col)]
+        if col == 0:
+            diagonal = board.get_piece(row + self.direction, col+1)
+            if diagonal is not None:
+                moves.append((row +self.direction, col + 1))
+        elif col == 7:
+            diagonal = board.get_piece(row + self.direction, col-1)
+            if diagonal is not None:
+                moves.append((row +self.direction, col - 1))
+        else:
+            diagonal = board.get_piece(row + self.direction, col+1)
+            if diagonal is not None:
+                moves.append((row +self.direction, col + 1))
+            diagonal = board.get_piece(row + self.direction, col-1)
+            if diagonal is not None:
+                moves.append((row +self.direction, col - 1))
         return moves
 
 class Rook(Piece):

@@ -16,8 +16,8 @@ loop back turn to the same player if they make an invalid move -
 Phrase 3:
 
 (move.py)
-pieces can't move out of bound/board
-conditional pawn moves, forward movement, diagonal capture, 2 square jump from starting position
+pieces can't move out of bound/board -
+conditional pawn moves, forward movement, diagonal capture, 2 square jump from starting position -
 en passant
 
 Phrase 4:

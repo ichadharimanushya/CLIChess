@@ -56,13 +56,16 @@ while True:
         print("Unable to move the piece to entered location.")
         continue
 
+    # extra pawn conditions
+    if game_piece.symbol in ("♟", "♙"):
+        game_piece.has_moved = True
+
     # moving the piece
     board.remove_piece(player_initial_move[0], player_initial_move[1])
     board.set_piece(player_final_move[0], player_final_move[1], game_piece)
 
     # movement logic
     turn = "black" if turn == "white" else "white"
-
 
 
 
