@@ -68,7 +68,7 @@ while True:
     player_final_move = move.coordinate_to_index(player_final_move)
     if player_final_move is None:
         print("Invalid move choice.")
-        continue
+        continue 
     game_piece = board.get_piece(player_initial_move[0], player_initial_move[1])
     if game_piece is None:
         print("No piece found at the entered position.")
@@ -89,9 +89,7 @@ while True:
 
     # moving the piece
     board.remove_piece(player_initial_move[0], player_initial_move[1])
-    if player_final_move[1] != player_initial_move[1] and type(game_piece) == pieces.Pawn and len(possible_moves) != 0:
-        if possible_moves[-1] == ():
-            board.remove_piece(player_final_move[0]-game_piece.direction, player_final_move[1])
+    #
     board.set_piece(player_final_move[0], player_final_move[1], game_piece)
     lastmove = (game_piece, player_final_move, player_initial_move)
 
