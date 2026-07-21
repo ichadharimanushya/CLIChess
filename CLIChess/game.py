@@ -84,8 +84,6 @@ while True:
     # extra pawn conditions
     if game_piece.symbol in ("♟", "♙"):
         game_piece.has_moved = True
-        # if abs(player_final_move[0] - player_initial_move[0]) == 2:
-        #     pass      
 
     # moving the piece
     board.remove_piece(player_initial_move[0], player_initial_move[1])
