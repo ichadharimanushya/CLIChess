@@ -42,17 +42,13 @@ class Pawn(Piece):
             if diagonal is not None and diagonal.color != self.color:
                 moves.append((row +self.direction, col - 1))
         if last_move is None: return moves
-        elif type(last_move[0]) == Pawn:
-            
-            pass
-        # elif type(last_move[0]) == Pawn:
-        #     final = last_move[1]
-        #     initial = last_move[2]
-        #     if row == final[0] and row in [3, 4] and abs(col-final[1]) == 1:
-        #         if abs(final[0]-initial[0]) == 2:
-        #             skipped = ((final[0]+initial[0])//2, initial[1])
-        #             moves.append(skipped)
-        #             moves.append(()) # for the catch of en passa or a normal capture
+        elif type(last_move[0]) == Pawn and last_move[0].color != self.color:
+            final = last_move[1]
+            initial = last_move[2]
+            if (initial[0] in (1, 6)) and (final[0] in (3, 4)):
+                if row == final[0] and abs(final[1]-col) == 1:
+                    target = ((final[0]+initial[0])//2, initial[1])
+                    moves.append(target)
         return moves
 
 class Rook(Piece):
