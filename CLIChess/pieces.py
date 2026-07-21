@@ -57,20 +57,21 @@ class Rook(Piece):
         self.symbol = "♜" if color == "white" else "♖"
 
     def possible_moves(self, board, row, col, last_move):
-        moves = []
-        rook_offset = [
-            (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-            (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-            (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)
-        ]
-        for r, c in rook_offset:
-            new_row, new_col = r + row, c + col
-            if board.is_valid_position(new_row, new_col):
-                target_boxORpiece = board.get_piece(new_row, new_col)
-                if target_boxORpiece is None or target_boxORpiece.color != self.color:
-                    moves.append((new_row, new_col))
-        return moves
+        pass
+        # moves = []
+        # rook_offset = [
+        #     (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
+        #     (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
+        #     (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
+        #     (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)
+        # ]
+        # for r, c in rook_offset:
+        #     new_row, new_col = r + row, c + col
+        #     if board.is_valid_position(new_row, new_col):
+        #         target_boxORpiece = board.get_piece(new_row, new_col)
+        #         if target_boxORpiece is None or target_boxORpiece.color != self.color:
+        #             moves.append((new_row, new_col))
+        # return moves
 
 class Bishop(Piece):
     def __init__(self, color):
