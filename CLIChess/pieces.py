@@ -58,6 +58,13 @@ class Rook(Piece):
 
     def possible_moves(self, board, row, col, last_move):
         pass
+
+
+        # using raytracing for path generation for the pieces
+
+        
+
+
         # moves = []
         # rook_offset = [
         #     (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
