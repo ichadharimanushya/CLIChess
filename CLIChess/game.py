@@ -89,7 +89,8 @@ while True:
 
     # moving the piece
     board.remove_piece(player_initial_move[0], player_initial_move[1])
-    #
+    if board.get_piece(player_final_move[0], player_final_move[1]) is None and type(game_piece) == pieces.Pawn:
+        board.remove_piece((player_final_move[0]-game_piece.direction), player_final_move[1]) # En passant capture (temporary implementation)
     board.set_piece(player_final_move[0], player_final_move[1], game_piece)
     lastmove = (game_piece, player_final_move, player_initial_move)
 
@@ -102,57 +103,4 @@ while True:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# basic moment logic
-
-# for i in range(10):
-#     board.print_board()
-#     user = input("Enter a move> ")
-#     user = user.split()
-#     initial_square = user[0]
-#     final_square = user[1]
-
-
-#     row, col = move.coordinate_to_index(initial_square)
-#     possible_moves = pieces.King("white").possible_moves(board, row, col)
-#     final_move = move.coordinate_to_index(final_square)
-#     print(possible_moves, final_move)
-#     if final_move in possible_moves:
-#         piece = board.remove_piece(row, col)
-#         row, col = move.coordinate_to_index(final_square)
-#         board.set_piece(row, col, piece)
-#     else:
-#         print("Invalid move")
 
