@@ -19,10 +19,6 @@ board = Board()
 
 
 
-
-
-
-
 while True:
     player_white = input("Enter the name of the player(1) with white pieces: ").strip()
     if player_white: break
@@ -32,7 +28,6 @@ while True:
     if player_black: break
 print()
 print(f"Welcome {player_white} and {player_black}!\n")
-
 
 
 
