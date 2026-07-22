@@ -61,8 +61,8 @@ class Rook(Piece):
 
 
         # using raytracing for path generation for the pieces
+        moves = []
 
-        
 
 
         # moves = []

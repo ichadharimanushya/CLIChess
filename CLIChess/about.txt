@@ -30,11 +30,33 @@ capturing logic for every piece, can't capture own pieces
 
 Phrase 5:
 
+check
+checkmate
+stalemate
+pinned pieces
+illegal king moves
 
 Phrase 6:
 
+castling
+promotion
+threefold repetition
+fifty-move rule
+insufficient material
 
 Phrase 7:
 
+fen support
+pgn support
+move history
+undo
+redo
+legal move generation
 
 Phrase 8:
+
+minimax
+alpha-beta pruning
+evaluation
+piece-square tables
+opeaning book
