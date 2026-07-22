@@ -24,9 +24,9 @@ en passant -
 Phrase 4:
 
 (move.py)
-collision detection for rooks and bihops
-combining above for queen using inheritance
-capturing logic for every piece, can't capture own pieces
+collision detection for rooks and bihops -
+combining above for queen using inheritance -
+capturing logic for every piece, can't capture own pieces -
 
 Phrase 5:
 

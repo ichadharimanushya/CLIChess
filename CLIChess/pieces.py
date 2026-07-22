@@ -12,8 +12,25 @@ class Piece:
     def __init__(self, color):
         self.color = color
 
-    def possible_moves(self, board, row, col, last_move):
-        pass
+    def possible_moves(self, board, row, col, last_move = None):
+        # because game_piece.posssible_moves(...) already means self == game_piece
+        piece = self
+        moves = []
+        for direction in piece.directions:
+            for i in range(1, 8):
+                curr_row, curr_col = row + i*(direction[0]), col + i*(direction[1])
+                if not board.is_valid_position(curr_row, curr_col):
+                    break
+                check_piece = board.get_piece(curr_row, curr_col)
+                if check_piece is not None:
+                    if check_piece.color == piece.color:
+                        break
+                    else:
+                        moves.append((curr_row, curr_col))
+                        break
+                else:
+                    moves.append((curr_row, curr_col))
+        return moves
 
 class Pawn(Piece):
     def __init__(self, color):
@@ -55,88 +72,20 @@ class Rook(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = "♜" if color == "white" else "♖"
+        self.directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
     def possible_moves(self, board, row, col, last_move):
         # using raytracing for path generation for the pieces
-        moves = []
-        possible_ways_to_move = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        for direction in possible_ways_to_move:
-            for i in range(1, 8):
-                curr_row, curr_col = row + i*(direction[0]), col + i*(direction[1])
-                if not board.is_valid_position(curr_row, curr_col):
-                    break
-                check_piece = board.get_piece(curr_row, curr_col)
-                print(check_piece)
-                if check_piece is not None:
-                    if check_piece.color == self.color:
-                        break
-                    else:
-                        moves.append((curr_row, curr_col))
-                        break
-                else:
-                    moves.append((curr_row, curr_col))
-        return moves
-
-
-
-
-
-        # moves = []
-        # rook_offset = [
-        #     (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-        #     (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-        #     (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-        #     (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)
-        # ]
-        # for r, c in rook_offset:
-        #     new_row, new_col = r + row, c + col
-        #     if board.is_valid_position(new_row, new_col):
-        #         target_boxORpiece = board.get_piece(new_row, new_col)
-        #         if target_boxORpiece is None or target_boxORpiece.color != self.color:
-        #             moves.append((new_row, new_col))
-        # return moves
+        return super().possible_moves(board, row, col)
 
 class Bishop(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = "♝" if color == "white" else "♗"
+        self.directions = [(1, 1), (-1, -1), (-1, 1), (1, -1)]
 
     def possible_moves(self, board, row, col, last_move):
-        # moves = []
-        # bishop_offset = [
-        #     (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
-        #     (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7),
-        #     (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
-        #     (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)
-        # ]
-        # for r, c in bishop_offset:
-        #     new_row, new_col = r + row, c + col
-        #     if board.is_valid_position(new_row, new_col):
-        #         target_boxORpiece = board.get_piece(new_row, new_col)
-        #         if target_boxORpiece is None or target_boxORpiece.color != self.color:
-        #             moves.append((new_row, new_col))
-        # return moves
-
-        moves = []
-        possible_ways_to_move = [(1, 1), (-1, -1), (-1, 1), (1, -1)]
-        for direction in possible_ways_to_move:
-            for i in range(1, 8):
-                curr_row, curr_col = row + i*(direction[0]), col + i*(direction[1])
-                if not board.is_valid_position(curr_row, curr_col):
-                    break
-                check_piece = board.get_piece(curr_row, curr_col)
-                print(check_piece)
-                if check_piece is not None:
-                    if check_piece.color == self.color:
-                        break
-                    else:
-                        moves.append((curr_row, curr_col))
-                        break
-                else:
-                    moves.append((curr_row, curr_col))
-        return moves
-
-
+        return super().possible_moves(board, row, col)
 
 class Knight(Piece):
     def __init__(self, color):
@@ -156,32 +105,17 @@ class Knight(Piece):
                     moves.append((new_row, new_col))
         return moves
 
-class Queen(Piece, Rook, Bishop):
+class Queen(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = "♛" if color == "white" else "♕"
+        self.directions = [
+            (1, 0), (-1, 0), (0, 1), (0, -1),
+            (1, 1), (-1, -1), (-1, 1), (1, -1)
+        ]
 
     def possible_moves(self, board, row, col, last_move):
-        # moves = []
-        # queen_offset = [
-        #     (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
-        #     (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7),
-        #     (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
-        #     (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7),
-        #     (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-        #     (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-        #     (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-        #     (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7)
-        # ]
-        # for r, c in queen_offset:
-        #     new_row, new_col = r + row, c + col
-        #     if board.is_valid_position(new_row, new_col):
-        #         target_boxORpiece = board.get_piece(new_row, new_col)
-        #         if target_boxORpiece is None or target_boxORpiece.color != self.color:
-        #             moves.append((new_row, new_col))
-        # return moves
-
-        return Rook().possible_moves(board, row, col, "") + Bishop().possible_moves(board, row, col, "")
+        return super().possible_moves(board, row, col)
 
 
 class King(Piece):
